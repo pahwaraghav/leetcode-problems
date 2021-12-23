@@ -19,7 +19,8 @@ class Solution {
                     currPeak++;
                     j++;
                 }
-                 res = Math.max(currPeak,res);
+                i=j-1;
+                res = Math.max(currPeak,res);
             }  
         }
         return res;

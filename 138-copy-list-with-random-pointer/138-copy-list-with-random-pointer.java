@@ -22,16 +22,19 @@ class Solution {
         HashMap<Node,Node> hmap = new HashMap<Node,Node>();
         
         Node temp = head;
-        Node newHead = new Node(head.val);
-        newHead.random = temp.random;
-        hmap.put(head,newHead);
-        temp = temp.next;
-        Node newTemp = newHead;
+        Node newHead = null;
+        Node newTemp = null;
         
         while(temp != null){
             Node newNode = new Node(temp.val);
             newNode.random = temp.random;
-            newTemp.next = newNode;
+            if(newTemp ==null){
+                newHead = newNode;
+                newTemp = newNode;
+            }
+            else{
+                newTemp.next = newNode;
+            }
             newTemp = newNode;
             hmap.put(temp,newNode);
             temp = temp.next;

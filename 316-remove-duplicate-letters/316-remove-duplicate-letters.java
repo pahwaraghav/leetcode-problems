@@ -26,10 +26,8 @@ class Solution {
         while(!st.empty()){
             int n = st.pop() + 'a';
             char ch = (char)n ;
-            res += ch;
+            res = ch + res;
         }
-        StringBuffer sbr = new StringBuffer(res);
-        sbr.reverse();
-        return sbr.toString();
+        return res;
     }
 }

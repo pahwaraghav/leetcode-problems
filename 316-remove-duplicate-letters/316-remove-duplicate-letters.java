@@ -23,11 +23,17 @@ class Solution {
             }
             arr[n]--;
         }
+
+        StringBuilder sbr = new StringBuilder();
+        sbr.setLength(st.size());
+        int i= st.size()-1;
         while(!st.empty()){
             int n = st.pop() + 'a';
             char ch = (char)n ;
-            res = ch + res;
+            sbr.setCharAt(i,ch);
+            i--;
         }
+        res = sbr.toString();
         return res;
     }
 }

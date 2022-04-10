@@ -14,39 +14,16 @@ class Node {
 */
 
 class Solution {
+    HashMap<Node,Node> hmap = new HashMap<>();
     public Node copyRandomList(Node head) {
-        if(head == null){
-            return head;
+        if(head == null) return null;
+        if(hmap.containsKey(head)){
+            return hmap.get(head);
         }
-        
-        HashMap<Node,Node> hmap = new HashMap<Node,Node>();
-        
-        Node temp = head;
-        Node newHead = null;
-        Node newTemp = null;
-        
-        while(temp != null){
-            Node newNode = new Node(temp.val);
-            newNode.random = temp.random;
-            if(newTemp ==null){
-                newHead = newNode;
-                newTemp = newNode;
-            }
-            else{
-                newTemp.next = newNode;
-            }
-            newTemp = newNode;
-            hmap.put(temp,newNode);
-            temp = temp.next;
-        }
-        newTemp = newHead;
-        while(newTemp != null){
-            if(newTemp.random != null){
-                Node nd = hmap.get(newTemp.random);
-                newTemp.random = nd;
-            }
-            newTemp =newTemp.next;
-        }
-        return newHead;
+        Node n = new Node(head.val);
+        hmap.put(head,n);
+        n.next = copyRandomList(head.next);
+        n.random = copyRandomList(head.random);
+        return n;
     }
 }

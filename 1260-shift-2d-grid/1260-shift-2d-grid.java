@@ -5,15 +5,14 @@ class Solution {
         int n = grid[0].length;
         k = k % (m*n);
         
-        int row, col;
-        row = m - (k-1) / n - 1;
-        col = n - (k-1) % n - 1;
-        System.out.println(row + " " + col);
+        int row = m - (k-1) / n - 1;
+        int col = n - (k-1) % n - 1;
         int num = 0;
         ArrayList<Integer> arr = new ArrayList<>();
         for(int i=row; i<grid.length;i++){
             for(int j=0;j<grid[0].length;j++){
                 if(i== row && j<col){
+                    j = col-1;
                     continue;
                 }
                 if(num == grid[0].length){

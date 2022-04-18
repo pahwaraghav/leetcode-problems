@@ -13,31 +13,23 @@
  *     }
  * }
  */
-
-class TreeInfo{
-    int numVisited;
-    int lastVisited;
-    TreeInfo(){}
-    TreeInfo(int numVisited,int lastVisited){
-        this.numVisited = numVisited;
-        this.lastVisited = lastVisited;
-    }
-}
 class Solution {
     public int kthSmallest(TreeNode root, int k) {
-        TreeInfo info = new TreeInfo(0,-1);
-        traverse(root,k,info);
-        return info.lastVisited;
-    }
-    public void traverse(TreeNode root, int k, TreeInfo info){
-        if(root == null || k < info.numVisited){
-            return;
+        Stack<TreeNode> st = new Stack<>();
+        int count = 0;
+        TreeNode temp = root;
+        while(!st.isEmpty() || temp!= null){
+            if(temp!=null){
+                st.push(temp);
+                temp = temp.left;
+            }
+            else{
+                TreeNode node = st.pop();
+                count++;
+                if(count == k) return node.val;
+                temp = node.right;
+            }
         }
-        traverse(root.left,k,info);
-        info.numVisited++;
-        if(info.numVisited == k){
-            info.lastVisited = root.val;
-        }
-        traverse(root.right,k,info);
+        return -1;
     }
 }

@@ -16,35 +16,29 @@
 class BSTIterator {
     
     TreeNode root;
-    ArrayList<Integer> li;
-    int currIdx;
+    Stack<Integer> st;
 
     public BSTIterator(TreeNode root) {
         this.root = root;
-        li = new ArrayList<>();
-        inOrder(root,li);
-        currIdx = -1;
+        st = new Stack<>();
+        inOrder(root,st);
     }
     
-    private void inOrder(TreeNode root, ArrayList<Integer> li){
+    private void inOrder(TreeNode root, Stack<Integer> li){
         if(root == null){
             return;
         }
-        inOrder(root.left,li);
-        li.add(root.val);
         inOrder(root.right,li);
+        st.push(root.val);
+        inOrder(root.left,li);
     }
     
     public int next() {
-        currIdx++;
-        return li.get(currIdx);
+        return st.pop();
     }
     
     public boolean hasNext() {
-        if(currIdx < li.size()-1){
-            return true;
-        }
-        return false;
+        return !st.isEmpty();
     }
 }
 

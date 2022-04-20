@@ -15,26 +15,25 @@
  */
 class BSTIterator {
     
-    TreeNode root;
-    Stack<Integer> st;
+    Stack<TreeNode> st;
 
     public BSTIterator(TreeNode root) {
-        this.root = root;
         st = new Stack<>();
-        inOrder(root,st);
+        pushLeft(root);    
     }
     
-    private void inOrder(TreeNode root, Stack<Integer> li){
+    private void pushLeft(TreeNode root){
         if(root == null){
             return;
         }
-        inOrder(root.right,li);
-        st.push(root.val);
-        inOrder(root.left,li);
+        st.push(root);
+        pushLeft(root.left);
     }
     
     public int next() {
-        return st.pop();
+        TreeNode temp = st.pop();
+        pushLeft(temp.right);
+        return temp.val;
     }
     
     public boolean hasNext() {

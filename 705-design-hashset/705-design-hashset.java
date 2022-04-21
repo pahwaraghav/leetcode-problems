@@ -2,7 +2,7 @@ class MyHashSet {
     
     int[] arr;
     
-    int size = 100000;
+    int size = 50000;
 
     public MyHashSet() {
         arr = new int[size];

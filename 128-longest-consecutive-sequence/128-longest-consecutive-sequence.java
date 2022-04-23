@@ -5,13 +5,14 @@ class Solution {
             hset.add(num);
         }
         int ans = 0;
-        for(int i=0; i<nums.length;i++){
+        Iterator<Integer> i=hset.iterator(); 
+        while(i.hasNext()){
             int curr_ans = 0;
-            if(hset.contains(nums[i]-1)){
+            int num = i.next();
+            if(hset.contains(num-1)){
                 continue;
             }
             curr_ans++;
-            int num = nums[i];
             while(hset.contains(num+1)){
                 curr_ans++;
                 num++;

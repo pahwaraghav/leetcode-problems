@@ -1,10 +1,8 @@
 class Customer{
-    int id;
     String startStation;
     int startTime;
     Customer(){}
-    Customer(int id, String startStation,int startTime){
-        this.id = id;
+    Customer(String startStation,int startTime){
         this.startStation = startStation;
         this.startTime = startTime;
     }
@@ -28,7 +26,7 @@ class UndergroundSystem {
     }
     
     public void checkIn(int id, String stationName, int t) {
-        Customer c = new Customer(id,stationName,t);
+        Customer c = new Customer(stationName,t);
         cus_hmap.put(id,c);
     }
     

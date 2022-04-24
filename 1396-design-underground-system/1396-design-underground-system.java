@@ -34,6 +34,7 @@ class UndergroundSystem {
     
     public void checkOut(int id, String stationName, int t) {
         Customer c = cus_hmap.get(id);
+        cus_hmap.remove(id);
         String stationNames = c.startStation + "-" + stationName;
         Station s;
         if(sta_hmap.containsKey(stationNames)){

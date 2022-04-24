@@ -14,17 +14,15 @@
  * }
  */
 class Solution {
+    boolean ans = true;
     public boolean isUnivalTree(TreeNode root) {
-        if(root == null) return true;
-        int val = root.val;
-        Queue<TreeNode> q = new LinkedList<>();
-        q.offer(root);
-        while(!q.isEmpty()){
-            TreeNode curr = q.poll();
-            if(curr.val != val) return false;
-            if(curr.left != null) q.offer(curr.left);
-            if(curr.right != null) q.offer(curr.right);
-        }
-        return true;
+        helper(root,root.val);
+        return ans;
+    }
+    public void helper(TreeNode root, int val){
+        if(root == null) return;
+        if(root.val != val) ans = false;
+        helper(root.left,val);
+        helper(root.right,val);
     }
 }

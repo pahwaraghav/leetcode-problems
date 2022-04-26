@@ -12,16 +12,6 @@ class Node implements Comparator<Node>{
 }
 class Solution {
     public int minCostConnectPoints(int[][] points) {
-        List<List<Node>> li = new ArrayList<>();
-        for(int i=0; i<points.length;i++) li.add(new ArrayList<>());
-        for(int i=0; i<points.length;i++){
-            for(int j=0;j<points.length;j++){
-                if(i==j) continue;
-                int cost = Math.abs(points[i][0] - points[j][0]) + Math.abs(points[i][1] - points[j][1]);
-                li.get(i).add(new Node(j,cost));
-            }
-        }
-        
         int res = 0;
         HashSet<Integer> visited = new HashSet<>();
         PriorityQueue<Node> pq = new PriorityQueue<>(points.length,new Node());
@@ -30,9 +20,10 @@ class Solution {
             Node n = pq.poll();
             int num = n.num;
             if(visited.contains(num)) continue;
-            List<Node> ar = li.get(num);
-            for(Node node : ar){
-                pq.add(node);
+            for(int i=0; i<points.length;i++){
+                if(i== num || visited.contains(i)) continue;
+                int cost = Math.abs(points[num][0] - points[i][0]) + Math.abs(points[num][1] - points[i][1]);
+                pq.offer(new Node(i,cost));
             }
             visited.add(num);
             res+= n.cost;

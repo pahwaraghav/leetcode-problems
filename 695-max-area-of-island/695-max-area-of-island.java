@@ -23,11 +23,9 @@ class Solution {
         }
         while(!q.isEmpty()){
             int[] p = q.poll();
-            int x = p[0];
-            int y = p[1];
             for(int[] dir: dirs){
-                int newX = x+dir[0];
-                int newY = y+dir[1];
+                int newX = p[0]+dir[0];
+                int newY =  p[1]+dir[1];
                 if(isValid(grid,newX,newY) && grid[newX][newY] ==1){
                     q.offer(new int[]{newX,newY});
                     ans++;

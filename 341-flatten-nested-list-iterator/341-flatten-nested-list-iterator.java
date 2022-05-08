@@ -25,13 +25,13 @@ public class NestedIterator implements Iterator<Integer> {
     }
     
     private void create(List<NestedInteger> nestedList){
-        for(int j=0;j<nestedList.size();j++){
-             if(nestedList.get(j).isInteger()){
-                 arr.add(nestedList.get(j).getInteger());
+        for(NestedInteger ni:nestedList){
+             if(ni.isInteger()){
+                 arr.add(ni.getInteger());
              }
              else{
-                 List<NestedInteger> li = nestedList.get(j).getList();
-                 create(li);
+                 NestedIterator itr=new NestedIterator(ni.getList());
+                 arr.addAll(itr.arr);
              }
         }   
     }

@@ -33,7 +33,7 @@ public class NestedIterator implements Iterator<Integer> {
                  NestedIterator itr=new NestedIterator(ni.getList());
                  arr.addAll(itr.arr);
              }
-        }   
+        }
     }
 
     @Override

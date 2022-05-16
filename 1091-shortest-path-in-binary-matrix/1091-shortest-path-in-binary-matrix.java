@@ -5,8 +5,7 @@ class Solution {
         if(grid[0][0] != 0 || grid[m-1][n-1] != 0){
             return -1;
         }
-        boolean[][] visited = new boolean[m][n];
-        visited[0][0] = true;
+        grid[0][0] = 1;
         Queue<int[]> q = new LinkedList<>();
         q.offer(new int[]{0,0});
         int ans = 1;
@@ -23,8 +22,8 @@ class Solution {
                         int newX = cur[0] + j;
                         int newY = cur[1] + k;
                         int[] arr = new int[]{newX,newY};
-                        if(isValid(grid,newX,newY) && grid[newX][newY] == 0 && !visited[newX][newY]){
-                            visited[newX][newY] = true;
+                        if(isValid(grid,newX,newY) && grid[newX][newY] == 0){
+                            grid[newX][newY] = 1;
                             q.offer(arr);
                         }
                     }

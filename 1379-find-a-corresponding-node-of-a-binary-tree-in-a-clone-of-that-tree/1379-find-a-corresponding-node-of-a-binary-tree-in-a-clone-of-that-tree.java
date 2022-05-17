@@ -10,30 +10,20 @@
 
 class Solution {
     ArrayList<Integer> path;
+    TreeNode ans;
     public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
-        ArrayList<Integer> arr = new ArrayList<>();
-        dfs(original,target,arr);
-        TreeNode ans = cloned;
-        for(int num: path){
-            if(num == 0){
-                ans = ans.left;
-            }
-            else ans = ans.right;
-        }
+        dfs(original,target,cloned);
         return ans;
     }
-    public void dfs(TreeNode root, TreeNode target, ArrayList<Integer> arr){
+    public void dfs(TreeNode root, TreeNode target, TreeNode cloned){
         if(root == null){
             return;
         }
         if(root == target){
-            path = new ArrayList<>(arr);
+            ans = cloned;
             return;
         }
-        arr.add(0);
-        dfs(root.left,target,arr);
-        arr.set(arr.size()-1,1);
-        dfs(root.right,target,arr);
-        arr.remove(arr.size()-1);
+        dfs(root.left,target,cloned.left);
+        dfs(root.right,target,cloned.right);
     }
 }

@@ -32,10 +32,11 @@ class Solution {
                 max = Math.max(max,getMax(matrix,dp,newI,newJ,curr+1));
             }
         }
-        dp[i][j] = 1 + max;
-        res = Math.max(res,1+max);
+        max++;
+        dp[i][j] = max;
+        res = Math.max(res,max);
         
-        return 1 + max;
+        return max;
     }
     public boolean validIndex(int[][] matrix, int i, int j){
         if(i<0 || i>= matrix.length || j<0 || j>=matrix[0].length) return false;

@@ -1,8 +1,6 @@
 class Solution {
     public int divide(int dividend, int divisor) {
         if(dividend == 1 << 31 && divisor == -1) return (1 << 31) -1;
-        System.out.println(Integer.MIN_VALUE);
-        System.out.println(Integer.MAX_VALUE);
         int num1 = Math.abs(dividend);
         int num2 = Math.abs(divisor);
         int res = 0;

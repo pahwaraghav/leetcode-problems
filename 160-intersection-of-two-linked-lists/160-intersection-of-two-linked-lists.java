@@ -13,31 +13,30 @@ public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         int n1 = getLength(headA);
         int n2 = getLength(headB);
-        ListNode greater = n1 > n2 ? headA : headB;
-        ListNode smaller = headA == greater ? headB : headA;
         
-        ListNode temp = greater;
-        ListNode temp2 = smaller;
-        HashSet<ListNode> hset = new HashSet<>();
-        while(temp2 != null){
-            hset.add(temp2);
-            temp2 = temp2.next;
+        
+        while(n1 > n2){
+            headA = headA.next;
+            n1--;
         }
-        while(temp != null){
-            if(hset.contains(temp)) return temp;
-            temp = temp.next;
+        
+        while(n2 > n1){
+            headB = headB.next;
+            n2--;
         }
-        return null;
+        
+        while(headA != headB){
+            headA = headA.next;
+            headB = headB.next;
+        }
+        return headA;
     }
     public int getLength(ListNode head){
         int i = 0;
-        ListNode slow = head;
-        ListNode fast = head;
-        while(fast != null && fast.next != null){
-            slow = slow.next;
-            fast = fast.next.next;
+        while(head != null){
+            head = head.next;
             i++;
         }
-        return i * 2;
+        return i;
     }
 }

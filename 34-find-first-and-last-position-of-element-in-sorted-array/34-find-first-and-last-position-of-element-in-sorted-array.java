@@ -1,7 +1,7 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        int[] res = {lowerBound(nums,target), upperBound(nums,target)};
-        return res;
+        int[] ans = {lowerBound(nums,target), upperBound(nums,target)};
+        return ans;
     }
     public int lowerBound(int[]nums, int target){
         int low = 0;

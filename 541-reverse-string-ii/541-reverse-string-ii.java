@@ -1,6 +1,6 @@
 class Solution {
     public String reverseStr(String s, int k) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(s.length());
         int i=0;
         boolean flag = true;
         while(i<s.length()){

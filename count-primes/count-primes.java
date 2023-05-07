@@ -1,16 +1,16 @@
 class Solution {
     public int countPrimes(int n) {
-        int[] arr = new int[n];
-        Arrays.fill(arr, 1);
+        boolean[] arr = new boolean[n];
+        Arrays.fill(arr, true);
         if(n<=2) return 0;
-        arr[0] = arr[1] = 0;
+        arr[0] = arr[1] = false;
         int count = 1;
         for(int i=3; i<n; i+=2){
-            if(arr[i] == 0) continue;
+            if(arr[i] == false) continue;
             count++;
             int j = 2;
             while(i*j<n){
-                arr[i*j] = 0;
+                arr[i*j] = false;
                 j++;
             }
         }

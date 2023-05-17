@@ -10,18 +10,16 @@
  */
 class Solution {
     public int pairSum(ListNode head) {
-        int n = 0;
-        HashMap<Integer, Integer> hmap = new HashMap<>();
+        List<Integer> lis = new ArrayList<>();
         ListNode temp = head;
-        int i = 0;
         while(temp != null){
-            hmap.put(i++, temp.val);
+            lis.add(temp.val);
             temp = temp.next;
-            n++;
         }
         int max = 0;
-        for(i=0; i<=n/2; i++){
-            int curr = hmap.get(i) + hmap.get(n-i-1);
+        int n = lis.size();
+        for(int i=0; i<=n/2; i++){
+            int curr = lis.get(i) + lis.get(n-i-1);
             max = Math.max(max, curr);
         }
         return max;

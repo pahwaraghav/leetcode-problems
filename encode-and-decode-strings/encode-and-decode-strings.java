@@ -1,6 +1,6 @@
 public class Codec {
 
-    String key = "~-~=";
+    String key = "π";
 
     // Encodes a list of strings to a single string.
     public String encode(List<String> strs) {

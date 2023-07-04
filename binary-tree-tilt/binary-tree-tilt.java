@@ -20,21 +20,19 @@ class Solution {
         return sum;
     }
     public Result helper(TreeNode root) {
-        if(root == null) return new Result(0,0);
+        if(root == null) return new Result(0);
         Result left = helper(root.left);
         Result right = helper(root.right);
         sum += Math.abs(left.sum - right.sum);
-        return new Result(Math.abs(left.sum - right.sum), root.val + left.sum + right.sum);
+        return new Result(root.val + left.sum + right.sum);
     }
 }
 
 class Result {
-    int tilt;
     int sum;
 
     Result() {}
-    Result(int tilt, int sum) {
-        this.tilt = tilt;
+    Result( int sum) {
         this.sum = sum;
     }
 }

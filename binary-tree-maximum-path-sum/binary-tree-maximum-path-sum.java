@@ -24,8 +24,8 @@ class Solution {
         if(root == null) return 0;
         int left = helper(root.left);
         int right = helper(root.right);
-        int max = Math.max(root.val, Math.max(root.val + left, root.val + right));
-        ans = Math.max(ans, Math.max(root.val + left + right, max));
-        return max;
+        ans = Math.max(ans,Math.max(root.val, Math.max(root.val + left + right, Math.max(root.val + left, root.val + right))));
+        System.out.println(root.val + " " + left + " " + right);
+        return Math.max(root.val, Math.max(root.val + left, root.val + right));
     }
 }

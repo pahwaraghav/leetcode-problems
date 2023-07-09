@@ -1,11 +1,11 @@
 class Solution {
     public String minWindow(String s, String t) {
         String ans = "";
-        int[] freq1 = new int[256];
+        int[] freq1 = new int[64];
         for(int i=0; i<t.length(); i++) {
             freq1[t.charAt(i) - 'A']++;
         }
-        int[] freq2 = new int[256];
+        int[] freq2 = new int[64];
         int left = 0;
         int right = 0;
         while(right<s.length()) {

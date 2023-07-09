@@ -10,7 +10,9 @@ class Solution {
         for(int i=0; i<cars.length; i++) {
             Car c = cars[i];
             double curr = (target - c.position) * 1.0 / c.speed;
-            if(curr > prev) {
+            if(curr <= prev) {
+            }
+            else {
                 ans++;
                 prev = curr;
             }

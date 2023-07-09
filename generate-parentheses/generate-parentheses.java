@@ -10,7 +10,7 @@ class Solution {
             return;
         }
         if(open > n) return;
-        helper(n, open+1, closed, curr+"(", ans);
+        if(open <= n) helper(n, open+1, closed, curr+"(", ans);
         if(open > closed){
             helper(n, open, closed+1, curr+")", ans);
         }

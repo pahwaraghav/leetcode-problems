@@ -9,8 +9,13 @@ class MedianFinder {
     }
     
     public void addNum(int num) {
-        low.add(num);
-        high.add(low.poll());
+        if(low.isEmpty() || num > low.peek()) {
+            high.add(num);
+        }
+        else {
+            low.add(num);
+            high.add(low.poll());
+        }
         if(low.size() < high.size()) {
             low.add(high.poll());
         }

@@ -1,6 +1,7 @@
 class Solution {
     public boolean validTree(int n, int[][] edges) {
         HashMap<Integer,List<Integer>> hmap = new HashMap<>();
+        HashSet<Integer> visited = new HashSet<>();
         for(int[] edge: edges) {
             if(!hmap.containsKey(edge[0])) hmap.put(edge[0], new ArrayList<>());
             if(!hmap.containsKey(edge[1])) hmap.put(edge[1], new ArrayList<>());
@@ -12,6 +13,7 @@ class Solution {
         Queue<Integer> q =new LinkedList<>();
         int level = 0;
         q.add(0);
+        visited.add(0);
         levels[0] = 0;
         while(!q.isEmpty()) {
             int size = q.size();
@@ -21,10 +23,11 @@ class Solution {
                 List<Integer> nbrs = hmap.get(val);
                 if(nbrs != null) {
                     for(int nbr: nbrs) {
-                        if(levels[nbr] != -1) {
+                        if(visited.contains(nbr)) {
                             if(levels[nbr] != level-2) return false;
                         }
                         else{
+                            visited.add(nbr);
                             levels[nbr] = level;
                             q.offer(nbr);
                         }

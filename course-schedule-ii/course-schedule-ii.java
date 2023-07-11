@@ -8,21 +8,22 @@ class Solution {
             degrees[preq[0]]++;
         }
         Queue<Integer> q = new LinkedList<>();
-        int[] order = new int[numCourses];
-        Arrays.fill(order,-1);
-        int i=0;
+        ArrayList<Integer> order = new ArrayList<>();
         addZeroIndegrees(degrees, q);
         while(!q.isEmpty()) {
             int val = q.poll();
-            order[i++] = val;
+            order.add(val);
             List<Integer> dependents = hmap.getOrDefault(val, new ArrayList<>());
             for(int dependent : dependents) {
             degrees[dependent]--;
             }
             addZeroIndegrees(degrees, q);
         }
-        if(i != numCourses) return new int[]{};
-        return order;
+        if(order.size() != numCourses) return new int[]{};
+        int[] ans = new int[order.size()];
+        int i = 0;
+        for(int val: order) ans[i++] = val;
+        return ans;
     }
 
     public void addZeroIndegrees(int[] degrees, Queue<Integer>q) {

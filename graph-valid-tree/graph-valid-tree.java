@@ -13,6 +13,7 @@ class Solution {
         int level = 0;
         q.add(0);
         levels[0] = 0;
+        int j = 1;
         while(!q.isEmpty()) {
             int size = q.size();
             level++;
@@ -27,14 +28,12 @@ class Solution {
                         else{
                             levels[nbr] = level;
                             q.offer(nbr);
+                            j++;
                         }
                     }
                 }
             }
         }
-        for(int val: levels) {
-            if(val == -1) return false;
-        }
-        return true;
+        return j == n;
     }
 }

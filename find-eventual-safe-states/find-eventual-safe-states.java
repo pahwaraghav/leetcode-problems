@@ -1,12 +1,12 @@
 class Solution {
     public List<Integer> eventualSafeNodes(int[][] graph) {
-        HashMap<Integer,List<Integer>> hmap = new HashMap<>();
+        List<List<Integer>> adjList = new ArrayList<>();
+        for(int i=0; i<graph.length; i++) adjList.add(new ArrayList<>());
         int[] outDegree = new int[graph.length];
         for(int i=0; i<graph.length; i++) {
             int vertex = i;
             for(int node: graph[i]) {
-                if(!hmap.containsKey(node)) hmap.put(node, new ArrayList<>());
-                hmap.get(node).add(vertex);
+                adjList.get(node).add(vertex);
             }
             outDegree[i] = graph[i].length;
         }
@@ -16,8 +16,7 @@ class Solution {
         while(!q.isEmpty()) {
             int val = q.poll();
             ans.add(val);
-            List<Integer> lis = hmap.get(val);
-            if(lis == null) continue;
+            List<Integer> lis = adjList.get(val);
             for(int node: lis) {
                 outDegree[node]--;
             }

@@ -1,17 +1,17 @@
 class Solution {
     public int rob(int[] nums) {
-        int[] mem = new int[nums.length];
-        Arrays.fill(mem,-1);
-        int last = helper(nums, nums.length-1, mem);
-        Arrays.fill(mem,-1);
-        int secondLast = helper(nums, nums.length-2, mem);
-        return Math.max(last,secondLast);
-    }
-    public int helper(int[] nums, int i, int[] dp) {
-        if(i<0) return 0;
-        if(dp[i] != -1) return dp[i];
-        int take = nums[i] + helper(nums, i-2, dp);
-        int notTake = helper(nums, i-1, dp);
-        return dp[i] = Math.max(take, notTake);
+        if(nums.length == 1) return nums[0];
+        if(nums.length == 2) return Math.max(nums[0], nums[1]);
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
+        if(nums.length > 2) dp[2] = Math.max(nums[0] + nums[2], nums[1]);
+        for(int i=3; i<nums.length; i++) {
+            int take = nums[i] + dp[i-2];
+            int notTake = dp[i-1];
+            dp[i] = Math.max(take, notTake);
+        }
+        System.out.println(Arrays.toString(dp));
+        return Math.max(dp[nums.length-1], dp[nums.length-2]);
     }
 }

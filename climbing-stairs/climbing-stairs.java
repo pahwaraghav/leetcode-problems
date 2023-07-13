@@ -1,12 +1,12 @@
 class Solution {
     public int climbStairs(int n) {
-        int[] mem = new int[n+1];
-        return helper(mem, n);
-    }
-    public int helper(int[] arr, int n) {
         if(n==1) return 1;
-        if(n==2) return 2;
-        if(arr[n] != 0) return arr[n];
-        return arr[n] = helper(arr, n-1) + helper(arr, n-2);
+        int[] mem = new int[n+1];
+        mem[1] = 1;
+        mem[2] = 2;
+        for(int i=3; i<=n; i++) {
+            mem[i] = mem[i-1] + mem[i-2];
+        }
+        return mem[n];
     }
 }

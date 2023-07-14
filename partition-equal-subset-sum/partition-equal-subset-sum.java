@@ -5,7 +5,7 @@ class Solution {
             sum += val;
         }
         if(sum%2 != 0) return false;
-        Boolean[][] arr = new Boolean[sum/2+1][nums.length];
+        Boolean[][] arr = new Boolean[sum][nums.length];
         return helper(nums, sum/2, nums.length-1, arr);
     }
     public boolean helper(int[] nums, int target, int i, Boolean[][] arr) {

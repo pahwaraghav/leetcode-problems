@@ -21,7 +21,6 @@ class Solution {
         }
         while(!q.isEmpty()) {
             String ingredient = q.poll();
-            System.out.println(ingredient);
             if(ingredientsRecipes.containsKey(ingredient)) {
                 List<Integer> lis = ingredientsRecipes.get(ingredient);
                 for(int val: lis) {

@@ -2,7 +2,6 @@ class Solution {
     public int[] findOriginalArray(int[] changed) {
         if(changed.length%2 != 0) return new int[]{};
         Arrays.sort(changed);
-        System.out.println(Arrays.toString(changed));
         HashMap<Integer,Integer> hmap = new HashMap<>();
         List<Integer> lis = new ArrayList<>();
         for(int val: changed) {

@@ -20,7 +20,6 @@ class Solution {
             if(take) st.push(val);
         }
         int[] res = new int[st.size()];
-        if(st.size()==0) return res;
         int i = res.length-1;
         while(i>=0) res[i--] = st.pop();
         return res;

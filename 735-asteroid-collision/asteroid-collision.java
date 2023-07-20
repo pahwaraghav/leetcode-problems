@@ -17,7 +17,6 @@ class Solution {
                     st.pop();
                 }
             }
-            System.out.println(take + " " + val);
             if(take) st.push(val);
         }
         int[] res = new int[st.size()];
